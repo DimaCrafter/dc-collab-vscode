@@ -1,0 +1,218 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    user-select: none;
+}
+
+input {
+    user-select: initial;
+}
+
+.box { flex: 1; }
+.box:not(:last-child) { margin-right: 25px; }
+.box > h1 {
+    font-weight: 100;
+    display: flex;
+}
+
+.box .item {
+    position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 8px 15px;
+	background-color: rgba(0, 0, 0, 0.08);
+	cursor: pointer;
+	margin-bottom: 10px;
+	transition: 0.15s;
+}
+.box .item:hover {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.box .item > .caption {
+	font-size: 16px;
+}
+
+.box .item > .muted {
+	opacity: 0.6;
+	font-size: 13px;
+}
+
+.box .item > .remove {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.box .item > .remove:before { transform: rotate(45deg); }
+.box .item > .remove:after { transform: rotate(-45deg); }
+.box .item > .remove:before, .box .item > .remove:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 1px;
+    background-color: #fff;
+}
+
+/* Profile */
+#profile {
+    margin-right: -20px;
+    flex: 0 0 430px;
+    padding: 25px 35px;
+    background-color: rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+#profile > .avatar {
+    display: block;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#profile > h1 {
+    text-align: center;
+    font-weight: 200;
+    letter-spacing: 0.25px;
+    margin-top: 15px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+#profile > .field {
+    font-size: 14px;
+    font-weight: 200;
+    margin-bottom: 15px;
+}
+
+#profile > .field > input {
+    display: block;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    border: none;
+    padding: 8px 10px;
+    margin-top: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+#profile > #color-select > input {
+    border-left: 3px solid;
+    padding-left: 7px;
+}
+
+#profile > #color-select > .palette {
+    font-size: 0;
+    margin-top: 5px;
+}
+
+#profile > #color-select > .palette > .color {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+#profile > #color-select > .palette > .color:hover {
+	transform: scale(1.2);
+	box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 15px 0;
+}
+
+#profile .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 3px;
+    border: none;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover { filter: brightness(0.9); }
+button:focus {
+    box-shadow: rgba(255, 255, 255, 0.15) 0 0 0 2px;
+    outline: none;
+}
+
+button > img { margin-right: 5px; }
+button.small { padding: 5px 8px; }
+
+button.red {
+    color: #fff;
+    background-color: var(--vscode-terminal-ansiRed);
+}
+
+button.green {
+    color: #fff;
+    background-color: var(--vscode-terminal-ansiGreen);
+}
+
+button.blue {
+    color: #fff;
+    background-color: var(--vscode-terminal-ansiBrightBlue);
+}
+
+/* Prelaoder */
+.loading {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.17);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: 0.3s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.loading > i {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    animation: rotate 1s infinite, loading-border 1s infinite linear;
+}
+
+@keyframes rotate {
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(360deg); }
+}
+
+@keyframes loading-border {
+    0%, 100% { border-color: transparent #fff; }
+    50% { border-color: #fff transparent; }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Collab Manager</title>
+		{% load('./welcome-page.css') %}
+	</head>
+	<body>
+		<div class="box" id="collabs">
+			<h1>
+				Your collabs
+				<div style="margin-left: auto">
+					<button onclick="add_workspace()" class="small green">
+						<img src="{{ add_icon_path }}" /> Add workspace
+					</button>
+					<button class="small blue">
+						<img src="{{ tools_icon_path }}" />
+						Configure workspace
+					</button>
+				</div>
+			</h1>
+			<div class="list"></div>
+		</div>
+		<div id="profile">
+			<img class="avatar" />
+			<h1>Profile</h1>
+			<div name="nick" class="field">
+				<span class="caption">Username</span>
+				<input type="text" />
+			</div>
+			<div name="color" id="color-select" class="field">
+				<span class="caption">Color</span>
+				<input type="text" />
+				<div class="palette"></div>
+			</div>
+			<div class="buttons">
+				<button class="red" onclick="clear_data()">Reset extension data</button>
+				<button class="green" onclick="save_profile()">Save profile</button>
+			</div>
+		</div>
+		<div class="loading">
+			<i></i>
+			<span class="text"></span>
+		</div>
+	</body>
+	{% load('./welcome-page.js') %}
+</html>

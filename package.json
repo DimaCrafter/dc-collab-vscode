@@ -1,0 +1,74 @@
+{
+	"name": "dc-collab",
+	"displayName": "dc-collab",
+	"description": "Easy collaboration across different editors",
+	"version": "0.1.5",
+	"publisher": "DimaCrafter",
+	"engines": { "vscode": "^1.26.0" },
+	"categories": ["Other"],
+	"activationEvents": [
+		"onFileSystem:collab",
+		"onCommand:collab.remove-all",
+		"onCommand:collab.add-workspace",
+		"onCommand:collab.menu",
+		"onView:collab-session"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "collab.add-workspace",
+				"title": "Add collab workspace",
+				"category": "dc-collab"
+			},
+			{
+				"command": "collab.manager.remove",
+				"title": "Remove",
+				"icon": "resources/remove.svg"
+			},
+			{
+				"command": "collab.remove-all",
+				"title": "Remove all collab workspaces",
+				"category": "dc-collab"
+			},
+			{
+				"command": "collab.menu",
+				"title": "Open Collab Manager",
+				"category": "dc-collab"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "collab",
+					"title": "dc-collab",
+					"icon": "resources/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"collab": [
+				{
+					"id": "collab-session",
+					"name": "Collab session"
+				}
+			]
+		},
+		"menus": {
+			"view/item/context": [
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/node": "^11.11.3",
+		"tslint": "^5.14.0",
+		"typescript": "^3.3.3333",
+		"vscode": "^1.1.30"
+	}
+}
